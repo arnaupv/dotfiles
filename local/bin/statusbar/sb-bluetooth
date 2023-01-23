@@ -1,0 +1,41 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) echo "power on\n" | bluetoothctl > /dev/null;;
+	2) echo "power off\n" | bluetoothctl > /dev/null;;
+        3) notify-send "🎧 Bluetooth Headphone module:" "\- Left click : connect headphone
+- Middle click : disconnect headphone
+- Right click : show this message
+✅ : bluetooth on
+⛔ : bluetooth off
+🔊 : headphone connected
+🔇 : headphone disconnected";;
+esac
+
+get_ble_status(){
+    echo $(echo "show\n" | bluetoothctl | grep Powered | awk '{print $NF}')
+}
+
+get_connected_ble_name_device(){
+  mac_devices=$(echo "devices\n" | bluetoothctl | grep -v NEW | grep Device | cut -f2 -d ' ')
+  connected_mac_devices="NULL"
+  for mac_device in ${mac_devices}; do
+    connected=$(echo "info $mac_device\n" | bluetoothctl | grep Connected | awk '{print $NF}')
+    if [ "$connected" = "yes" ]; then 
+      connected_mac_devices=$mac_device; 
+    fi
+  done
+  
+  ble_name_device=$(echo "devices\n" | bluetoothctl | grep -v NEW | grep Device | cut -f2- -d ' ' | grep "$connected_mac_devices" | cut -f2- -d ' ')
+  
+  echo $ble_name_device 
+}
+
+ble_status=$(get_ble_status)
+connected_ble_name_device=$(get_connected_ble_name_device)
+[ "$ble_status" = "no" ] && ble_icon="⛔"
+[ "$ble_status" = "yes" ] && ble_icon="✅"
+[ "$connected_ble_name_device" = "" ] && [ "$ble_status" = "yes" ] && device_icon="🔇"
+[ "$connected_ble_name_device" != "" ] && [ "$ble_status" = "yes" ] && device_icon="🔊" 
+
+echo $ble_icon $device_icon $device_status $connected_ble_name_device

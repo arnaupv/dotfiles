@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# In case bluetooth is not active you can execute the following command:
+# $ rfkill unblock bluetooth
+# and then
+# $ echo -e "power on\n" | bluetoothctl 
+# $ rfkill unblock all
+
+
+disconnect_ble_device() {
+	current_ble_connected_mac_device=$(echo -e "devices\n" | bluetoothctl | grep -v NEW | grep Device | cut -f2 -d ' ' | while read uuid; do  connected=$(echo -e "info $uuid\n" | bluetoothctl | grep Connected | awk '{print $NF}'); if [[ $connected == "yes" ]]; then echo $uuid; fi; done)
+	
+	printf "Disconnecting device: %s" "$current_ble_connected_mac_device"
+	echo "disconnect ${current_ble_connected_mac_device}\n" | bluetoothctl
+	printf "Device disconnected: %s" "$current_ble_connected_mac_device"
+}
+
+select_ble_name() {
+	ble_mac=$(echo "devices\n" | bluetoothctl | grep -v NEW | grep Device | cut -f2- -d ' ' | grep "$1" | cut -f1 -d ' ')
+		
+	printf "Connecting to target device: %s" "$ble_mac"
+	echo "connect ${ble_mac}\n" | bluetoothctl
+	printf "Connected to target device: %s" "$ble_mac"
+	
+}
+# Get all available ble mac.
+
+ble_name_devices=$(echo "devices\n" | bluetoothctl | grep -v NEW | grep Device | cut -f3- -d ' ')
+echo ${ble_name_devices}
+# Get user choice including multi-monitor and manual selection:
+chosen=$(printf "%s" "$ble_name_devices" | dmenu -i -p "Select ble device:") &&
+case "$chosen" in
+	*) disconnect_ble_device; select_ble_name "$chosen" ;;
+esac
+
+postrun
