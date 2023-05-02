@@ -1,0 +1,21 @@
+[user]
+	email = 47103654+arnaupv@users.noreply.github.com
+	name = Arnau Pont Vilchez
+[alias]
+	l2 = log --graph --format='%h %Cred%ad%Creset %C(yellow)%aN%Creset %s'
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+	#pager = diff-so-fancy | less --tabs=4 -RFX
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[safe]
+	directory = /home/pontsoul/Documents/IoTWired/Software/HA/home-assistant/config/ha-upc-mn01
+
+[credential]
+	helper = store
