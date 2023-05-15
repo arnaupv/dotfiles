@@ -94,8 +94,9 @@ bindsym $mod+a focus parent
 
 # If you are interested in more Iconts take a look at the following link:
 # https://fontawesome.com/v4/cheatsheet/
-set $workspace1 "[1]Terminals " 
-set $workspace2 "[2]Browser " 
+
+set $workspace1 "[1]Browser " 
+set $workspace2 "[2]Terminals " 
 set $workspace3 "[3]Messaging "
 set $workspace4 "[4]"
 set $workspace5 "[5]"
@@ -216,8 +217,8 @@ exec google-chrome
 exec gnome-terminal 
 exec slack
 
-assign [class="Gnome-terminal"] $workspace1
-assign [class="Google-chrome"] $workspace2
+assign [class="Google-chrome"] $workspace1
+assign [class="Gnome-terminal"] $workspace2
 assign [class="Slack"] $workspace3
 
 # Source: https://dev.to/dianjuar/i3wm-screenshot-shortcuts-3n7b
