@@ -207,8 +207,10 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brig
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 exec_always feh --bg-fill ~/Pictures/moon.jpg
-exec_always xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-2 --off
-
+# exec_always xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-2 --off
+# the following instruction has been automatically created using the tool arandr
+# more details in this video: https://www.youtube.com/watch?v=8-S0cWnLBKg
+exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 1920x1080 --pos 1920x0 --rotate normal
 
 exec google-chrome
 exec gnome-terminal 
