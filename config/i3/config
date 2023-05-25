@@ -94,8 +94,9 @@ bindsym $mod+a focus parent
 
 # If you are interested in more Iconts take a look at the following link:
 # https://fontawesome.com/v4/cheatsheet/
-set $workspace1 "[1]Terminals " 
-set $workspace2 "[2]Browser " 
+
+set $workspace1 "[1]Browser " 
+set $workspace2 "[2]Terminals " 
 set $workspace3 "[3]Messaging "
 set $workspace4 "[4]"
 set $workspace5 "[5]"
@@ -207,15 +208,17 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brig
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 exec_always feh --bg-fill ~/Pictures/moon.jpg
-exec_always xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-2 --off
-
+# exec_always xrandr --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-2 --off
+# the following instruction has been automatically created using the tool arandr
+# more details in this video: https://www.youtube.com/watch?v=8-S0cWnLBKg
+exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 1920x1080 --pos 1920x0 --rotate normal
 
 exec google-chrome
 exec gnome-terminal 
 exec slack
 
-assign [class="Gnome-terminal"] $workspace1
-assign [class="Google-chrome"] $workspace2
+assign [class="Google-chrome"] $workspace1
+assign [class="Gnome-terminal"] $workspace2
 assign [class="Slack"] $workspace3
 
 # Source: https://dev.to/dianjuar/i3wm-screenshot-shortcuts-3n7b
