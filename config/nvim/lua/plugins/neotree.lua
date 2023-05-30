@@ -1,11 +1,11 @@
 return {
   -- nav-buddy
-  {
-    "miversen33/netman.nvim",
-    config = function()
-      require("netman")
-    end,
-  },
+  -- {
+  --   "miversen33/netman.nvim",
+  --   config = function()
+  --     require("netman")
+  --   end,
+  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -17,7 +17,7 @@ return {
       },
       sources = {
         "filesystem", -- Neotree filesystem source
-        "netman.ui.neo-tree", -- The one you really care about 😉
+        -- "netman.ui.neo-tree", -- The one you really care about 😉
       },
     },
   },
