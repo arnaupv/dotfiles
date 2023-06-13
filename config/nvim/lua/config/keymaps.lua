@@ -9,3 +9,9 @@ vim.keymap.set(
   { noremap = true, silent = false, desc = "Show LogFile" }
 )
 vim.keymap.set("n", "<leader>um", "<cmd>:messages<cr>", { noremap = true, silent = false, desc = "Show Messages" })
+vim.keymap.set(
+  "n",
+  "<leader>fZ",
+  '<cmd>:lua require("lazy.util").float_term({"zsh"})<cr>',
+  { noremap = true, silent = false, desc = "Terminal ZSH (cwd)" }
+)
