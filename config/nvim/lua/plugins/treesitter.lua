@@ -40,7 +40,6 @@ return {
         "c",
         "dockerfile",
         "html",
-        "java",
         "javascript",
         "jsonc",
         "lua",

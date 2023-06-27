@@ -18,8 +18,6 @@ return {
         "isort",
         "flake8",
         -- Java
-        "jdtls",
-        "java-debug-adapter",
         "semgrep",
         "google-java-format",
         -- Docker
@@ -149,4 +147,6 @@ return {
       { "neovim/nvim-lspconfig" },
     },
   },
+  -- custom language specific extension modules
+  { import = "plugins.lang.java" },
 }
