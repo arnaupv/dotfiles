@@ -22,6 +22,10 @@ return {
         "java-debug-adapter",
         "semgrep",
         "google-java-format",
+        -- Docker
+        "dockerfile-language-server",
+        "docker-compose-language-service",
+        "hadolint",
       },
     },
   },
@@ -95,6 +99,8 @@ return {
           -- JAVA
           nls.builtins.formatting.google_java_format,
           nls.builtins.diagnostics.semgrep.with({ extra_args = { "--config", "auto" } }),
+          -- Docker
+          nls.builtins.diagnostics.hadolint,
         },
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
       })

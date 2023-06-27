@@ -38,6 +38,7 @@ return {
       ensure_installed = {
         "bash",
         "c",
+        "dockerfile",
         "html",
         "java",
         "javascript",
