@@ -39,6 +39,7 @@ return {
         "bash",
         "c",
         "html",
+        "java",
         "javascript",
         "jsonc",
         "lua",

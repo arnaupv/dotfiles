@@ -12,10 +12,16 @@ return {
         "shellcheck",
         "deno",
         "shfmt",
+        -- Python
         "pyright",
         "black",
         "isort",
         "flake8",
+        -- Java
+        "jdtls",
+        "java-debug-adapter",
+        "semgrep",
+        "google-java-format",
       },
     },
   },
@@ -86,6 +92,9 @@ return {
           nls.builtins.formatting.isort,
           nls.builtins.formatting.black.with({ extra_args = { "--line-length=120", "-t", "py37" } }),
           nls.builtins.diagnostics.flake8.with({ extra_args = { "--max-line-length=120" } }),
+          -- JAVA
+          nls.builtins.formatting.google_java_format,
+          nls.builtins.diagnostics.semgrep.with({ extra_args = { "--config", "auto" } }),
         },
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
       })
