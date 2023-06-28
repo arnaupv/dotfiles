@@ -4,26 +4,14 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "prettierd",
-        "stylua",
-        "selene",
-        "luacheck",
-        "eslint_d",
-        "shellcheck",
-        "deno",
-        "shfmt",
+        -- Javascript
+        -- "eslint_d",
+        -- "deno",
         -- Python
         "pyright",
-        "black",
-        "isort",
-        "flake8",
-        -- Java
-        "semgrep",
-        "google-java-format",
         -- Docker
         "dockerfile-language-server",
         "docker-compose-language-service",
-        "hadolint",
       },
     },
   },
@@ -63,46 +51,6 @@ return {
       --   end,
       -- },
     },
-  },
-  -- null-ls
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local nls = require("null-ls")
-      nls.setup({
-        debounce = 150,
-        save_after_format = false,
-        sources = {
-          -- nls.builtins.formatting.prettierd,
-          nls.builtins.formatting.stylua,
-          nls.builtins.formatting.fish_indent,
-          -- nls.builtins.formatting.fixjson.with({ filetypes = { "jsonc" } }),
-          -- nls.builtins.formatting.eslint_d,
-          -- nls.builtins.diagnostics.shellcheck,
-          nls.builtins.formatting.shfmt,
-          nls.builtins.diagnostics.markdownlint,
-          -- nls.builtins.diagnostics.luacheck,
-          nls.builtins.formatting.prettierd.with({
-            filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
-          }),
-          nls.builtins.diagnostics.selene.with({
-            condition = function(utils)
-              return utils.root_has_file({ "selene.toml" })
-            end,
-          }),
-          -- nls.builtins.code_actions.gitsigns,
-          nls.builtins.formatting.isort,
-          nls.builtins.formatting.black.with({ extra_args = { "--line-length=120", "-t", "py37" } }),
-          nls.builtins.diagnostics.flake8.with({ extra_args = { "--max-line-length=120" } }),
-          -- JAVA
-          nls.builtins.formatting.google_java_format,
-          nls.builtins.diagnostics.semgrep.with({ extra_args = { "--config", "auto" } }),
-          -- Docker
-          nls.builtins.diagnostics.hadolint,
-        },
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
-      })
-    end,
   },
   -- nav-buddy
   {
@@ -147,6 +95,38 @@ return {
       { "neovim/nvim-lspconfig" },
     },
   },
+  -- mason-null-ls
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
+    opts = {
+      ensure_installed = {},
+      automatic_setup = false,
+      automatic_installation = true,
+      -- handlers = {},
+    },
+  },
   -- custom language specific extension modules
   { import = "plugins.lang.java" },
+  { import = "plugins.lang.markdown" },
+  { import = "plugins.lang.lua" },
+  { import = "plugins.lang.sh" },
+  { import = "plugins.lang.python" },
+  { import = "plugins.lang.docker" },
+  -- null-ls
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local nls = require("null-ls")
+      nls.setup({
+        debounce = 150,
+        save_after_format = false,
+        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
+      })
+    end,
+  },
 }

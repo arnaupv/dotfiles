@@ -21,13 +21,27 @@ return {
     end,
   },
 
-  -- correctly setup mason dap extensions
+  -- correctly setup mason-null-ls extensions
   {
-    "jay-babu/mason-nvim-dap.nvim",
+    "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "javatest", "javadbg" })
+        vim.list_extend(opts.ensure_installed, {
+          -- "semgrep",
+          "google_java_format",
+        })
       end
+
+      local null_ls = require("null-ls")
+      opts.handlers = {
+        -- function() end, -- disables automatic setup of all null-ls sources
+        google_java_format = function(source_name, methods)
+          null_ls.register(null_ls.builtins.formatting.google_java_format)
+        end,
+        -- semgrep = function(source_name, methods)
+        --   null_ls.register(null_ls.builtins.diagnostics.semgrep.with({ extra_args = { "--config", "auto" } }))
+        -- end,
+      }
     end,
   },
 
