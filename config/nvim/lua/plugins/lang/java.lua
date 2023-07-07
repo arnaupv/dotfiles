@@ -21,6 +21,16 @@ return {
     end,
   },
 
+  -- correctly setup mason-nvim-dap extensions
+  {
+    "arnaupv/mason-nvim-dap.nvim",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "javatest", "javadbg@0.51.0" })
+      end
+    end,
+  },
+
   -- correctly setup mason-null-ls extensions
   {
     "jay-babu/mason-null-ls.nvim",
