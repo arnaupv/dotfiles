@@ -16,7 +16,7 @@ and then clone the project:
 git clone https://github.com/arnaupv/dotfiles.git ${HOME}/dotfiles
 ```
 
-Finally install the dotfiles
+Finally install the pacakges and the dotfiles:
 
 ```bash
 cd ${HOME}/dotfiles; ./install.sh
