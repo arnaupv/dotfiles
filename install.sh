@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+USER=$(ls /home/) # This can be problematic in case there are more than one users available.
 SUDO=""
 BASEDIR=$(dirname "$0")
 LOG_FILE=${BASEDIR}/logs/install.log
@@ -12,7 +13,7 @@ function log() {
 function create_folder() {
 	if [[ ! -d "$1" ]]; then
 		mkdir -p "$1"
-		# log "Folder $1 created."
+		log "Folder $1 created."
 	fi
 }
 
@@ -82,7 +83,7 @@ fi
 # Bash fucntions that iterates through all the scriptsm from ./packages/
 # and executes them one by one. The logs are saved in the current directory ./logs/
 if [[ -n "${install_packages}" ]]; then
-	log "Go to ${BASEDIR}"
+	log "Installation of pacackes: "
 	for file in "${BASEDIR}"/packages/*.sh; do
 		filename=$(basename "$file")
 		program="${filename%.*}"
@@ -100,22 +101,23 @@ if [[ -n "${install_packages}" ]]; then
 
 		if ! program_exists "${program}" >/dev/null 2>&1; then
 			echo "Installing $file"
-			$SUDO "$file" 2>&1
+			${SUDO} "$file" 2>&1
 		else
 			echo "Skipping installation: $file. Program already installed."
 		fi | tee "${BASEDIR}/logs/${filename}.log"
 	done
+
+	log "Creation of config folders:"
+	# Create config dotfiles ~/.config ~/.local/ ~/.cache/
+
+	for folder in ".config" ".local" ".cache"; do
+		folder_absolute="/home/${USER}/${folder}"
+		create_folder "${folder_absolute}"
+		chown -R "${USER}:${USER}" "${folder_absolute}"
+	done
 fi
 
 if [ -n "${install_dotfiles}" ]; then
-	# log "Installing dotfiles"
-
-	# Create config dotfiles ~/.config ~/.local/ ~/.cache/
-	for folder in ".config" ".local" ".cache"; do
-		create_folder "${HOME}/${folder}"
-		# chown -R my-app:my-app
-	done
-
 	# Unlink all dotfiles
 	stow --dir="$HOME"/dotfiles/dotfiles/ --target="$HOME" --verbose -D .
 
