@@ -63,18 +63,3 @@ else
 	fi
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
 fi
-
-# Forcing ~/.config/ accessible by my-app user
-if [ ! -d /home/my-app/.config ]; then
-	mkdir /home/my-app/.config
-fi
-
-# Forcing ~/.local/ accessible by my-app user
-if [ ! -d /home/my-app/.local ]; then
-	mkdir /home/my-app/.local
-fi
-
-# Forcing ~/.cache/ accessible by my-app user
-if [ ! -d /home/my-app/.cache ]; then
-	mkdir /home/my-app/.cache
-fi

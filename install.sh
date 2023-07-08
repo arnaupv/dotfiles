@@ -9,6 +9,12 @@ LOG_FILE=${BASEDIR}/logs/install.log
 function log() {
 	echo "$(date) - $1" | tee -a "${LOG_FILE}"
 }
+function create_folder() {
+	if [[ ! -d "$1" ]]; then
+		mkdir -p "$1"
+		# log "Folder $1 created."
+	fi
+}
 
 # Check if a program exists, returing true if it does and false otherwise.
 function program_exists() {
@@ -102,7 +108,14 @@ if [[ -n "${install_packages}" ]]; then
 fi
 
 if [ -n "${install_dotfiles}" ]; then
-	log "Installing dotfiles"
+	# log "Installing dotfiles"
+
+	# Create config dotfiles ~/.config ~/.local/ ~/.cache/
+	for folder in ".config" ".local" ".cache"; do
+		create_folder "${HOME}/${folder}"
+		# chown -R my-app:my-app
+	done
+
 	# Unlink all dotfiles
 	stow --dir="$HOME"/dotfiles/dotfiles/ --target="$HOME" --verbose -D .
 
