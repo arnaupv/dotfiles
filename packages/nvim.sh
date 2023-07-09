@@ -17,7 +17,6 @@ cd "${HOME}"
 apt-get update
 apt-get install -y \
 	git \
-	zsh \
 	zip \
 	libluajit-5.1-dev \
 	ripgrep \
