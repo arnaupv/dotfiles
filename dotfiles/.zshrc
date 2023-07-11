@@ -30,7 +30,8 @@ zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select=long
@@ -58,6 +59,37 @@ alias ls='lsd --group-dirs=first'
 alias cat='bat --style plain'
 alias vim='nvim'
 
+# alias git_fap = 'git fetch -p && git branch --merged | grep -v "*" | grep -v "master" | xargs git branch -d'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zsh/zshalias ] && source ~/.zsh/zshalias
 [ -f ~/.zsh/zshalias.extras ] && source ~/.zsh/zshalias.extras
+
+# Plugins
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-sudo/sudo.plugin.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# NVM (Node Version Manager)
+export NVM_DIR="/home/pontsoul/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Local Scripts
+export PATH="$HOME/.local/bin:$PATH"
+[ -f ~/.profile ] && source ~/.profile
+
+# Java
+export JAVA_HOME=$(update-alternatives --query java | grep 'Value: ' | cut -d' ' -f2 | xargs dirname | xargs dirname)
+export PATH=$JAVA_HOME:$PATH
+
+# Alacritty
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# FortiClient VPN
+export PATH=/opt/forticlient/gui/FortiClient-linux-x64/:$PATH

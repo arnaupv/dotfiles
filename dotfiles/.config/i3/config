@@ -107,7 +107,8 @@ set $workspace9 "[9]"
 set $workspace10 "[10]"
 
 # BCN Consell de Cent Screen
-set $monitor1 "HDMI-2"
+# set $monitor1 "HDMI-2"
+set $monitor1 "eDP-1"
 # Laptop Screen
 set $monitor2 "eDP-1"
 
