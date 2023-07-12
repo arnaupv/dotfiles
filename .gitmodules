@@ -4,3 +4,6 @@
 [submodule "dotfiles/.config/alacritty/themes"]
 	path = dotfiles/.config/alacritty/themes
 	url = https://github.com/alacritty/alacritty-theme.git
+[submodule "dotfiles/powerlevel10k"]
+	path = dotfiles/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
