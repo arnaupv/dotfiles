@@ -119,8 +119,8 @@ fi
 
 if [ -n "${install_dotfiles}" ]; then
 	# Unlink all dotfiles
-	stow --dir="$HOME"/dotfiles/dotfiles/ --target="$HOME" --verbose -D .
+	stow --dir="$HOME"/setup-environment/dotfiles/ --target="$HOME" --verbose -D .
 
 	# Link dotfiles again
-	stow --dir="$HOME"/dotfiles/dotfiles/ --target="$HOME" --verbose .
+	stow --dir="$HOME"/setup-environment/dotfiles/ --target="$HOME" --verbose .
 fi
