@@ -2,7 +2,26 @@
 	email = 47103654+arnaupv@users.noreply.github.com
 	name = Arnau Pont Vilchez
 [alias]
-	l2 = log --graph --format='%h %Cred%ad%Creset %C(yellow)%aN%Creset %s'
+  l2 = log --graph --format='%h %Cred%ad%Creset %C(yellow)%aN%Creset %s'
+  st=status
+  co=checkout
+  cob=checkout -b
+  who=shortlog -n -s --no-merges
+  amd=commit --amend --no-edit
+  cfg=config --list
+  cfgg=config --global --list
+  cc=!f() { git diff $1^..$1; }; f
+  rbi=!f() { git rebase -i HEAD~$1; }; f
+  rb=!git fetch origin && git rebase origin/master
+  cleanup=!git remote prune origin && git gc && git clean -dfx && git stash clear
+  rvw=!f() { git diff master --full-index > /home/username/workspace/patches/$1.patch; }; f
+  rvwto=!f() { git diff $1 --full-index > /home/username/workspace/patches/$2.patch; }; f
+  lg=log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen<%an> %C(bold blue)(%cr)%Creset' --abbrev-commit --date=relative
+  lgs=log -n 10 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen<%an> %C(bold blue)(%cr)%Creset' --abbrev-commit --date=relative
+  lgg=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen<%an> %C(bold blue)(%cr)%Creset' --abbrev-commit --date=relative
+  lgsg=log -n 10 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen<%an> %C(bold blue)(%cr)%Creset' --abbrev-commit --date=relative
+  bp=for-each-ref refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(color:cyan)<%(authorname)>%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) - %(contents:subject)'co = checkout
+ 
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim
