@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "------------------------"
-echo "How to connect to UPC VPN?"
+echo "How to connect to UPC VPN??"
 echo "This VPN works via forticlient (we recommend to use gnome insteda of I3 as a Windows Manager (WM), for connecting to forticlient."
 echo "Forticlient Binary: /opt/forticlient/gui/FortiClient-linux-x64/FortiClient"
 echo "------------------------"
