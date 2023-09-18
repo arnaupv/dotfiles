@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-USER=$(ls /home/) # This can be problematic in case there are more than one users available.
+USER=$(ls /home/ | head -n1) # This can be problematic in case there are more than one users available.
 SUDO=""
 BASEDIR=$(dirname "$0")
 LOG_FILE=${BASEDIR}/logs/install.log
