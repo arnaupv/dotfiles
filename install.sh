@@ -115,8 +115,6 @@ if [[ -n "${install_packages}" ]]; then
 		create_folder "${folder_absolute}"
 		chown -R "${USER}:${USER}" "${folder_absolute}"
 	done
-
-    sleep infinity
 fi
 
 if [ -n "${install_dotfiles}" ]; then
