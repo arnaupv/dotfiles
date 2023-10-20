@@ -3,6 +3,11 @@
 # Instructions
 # https://github.com/nodesource/distributions#installation-instructions
 
+# Pinning Found in https://github.com/nodesource/distributions/issues/1579
+echo "Package: nodejs" >> /etc/apt/preferences.d/preferences && \
+echo "Pin: origin deb.nodesource.com" >> /etc/apt/preferences.d/preferences && \
+echo "Pin-Priority: 1001" >> /etc/apt/preferences.d/preferences
+
 apt-get update
 apt-get install -y ca-certificates curl gnupg
 mkdir -p /etc/apt/keyrings
