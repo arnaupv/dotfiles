@@ -65,5 +65,3 @@ else
 	fi
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
 fi
-
-sleep infinity
