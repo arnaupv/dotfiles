@@ -1,0 +1,16 @@
+regolith.wallpaper.file: /home/arnaup/Pictures/mywallpaper-rocket-blast-off.jpg
+regolith.wallpaper.options: wallpaper
+regolith.lockscreen.wallpaper.file: /home/arnaup/Pictures/mywallpaper-rocket-blast-off.jpg
+regolith.lockscreen.wallpaper.options: wallpaper
+
+/* # https://www.nerdfonts.com/cheat-sheet */
+i3-wm.workspace.01.name: 1:[1] 
+i3-wm.workspace.02.name: 2:[2] 
+i3-wm.workspace.03.name: 3:[3] 󰒱
+i3-wm.workspace.04.name: 4:[4] 󱘖
+i3-wm.workspace.05.name: 5:[5] 󰀴
+i3-wm.workspace.06.name: 6:[6] 
+i3-wm.workspace.07.name: 7:[7] 
+i3-wm.workspace.08.name: 8:[8] 
+
+i3-wm.bar.mode: hide
