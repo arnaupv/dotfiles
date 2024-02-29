@@ -1,0 +1,1 @@
+/home/arnaup/setup-environment/software/android-studio/bin/studio.sh

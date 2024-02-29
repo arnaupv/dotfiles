@@ -1,6 +1,7 @@
 [user]
-	email = 47103654+arnaupv@users.noreply.github.com
-	name = Arnau Pont Vilchez
+  ; email = 47103654+arnaupv@users.noreply.github.com
+  email = arnau.pont@paxport.net
+	name = Arnau Pont
 [alias]
   l2 = log --graph --format='%h %Cred%ad%Creset %C(yellow)%aN%Creset %s'
   st=status

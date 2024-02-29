@@ -12,8 +12,6 @@ prompt adam1
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -66,8 +64,8 @@ alias vim='nvim'
 [ -f ~/.zsh/zshalias.extras ] && source ~/.zsh/zshalias.extras
 
 # Plugins
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-sudo/sudo.plugin.zsh
+# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh-sudo/sudo.plugin.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # NVM (Node Version Manager)
@@ -75,7 +73,7 @@ export NVM_DIR="/home/pontsoul/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Pyenv
+# # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -93,3 +91,68 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # FortiClient VPN
 export PATH=/opt/forticlient/gui/FortiClient-linux-x64/:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export LC_ALL=en_US.UTF-8
+
+# Setting default editor
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
+
+# https://github.com/alacritty/alacritty/issues/1408#issuecomment-467970836
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# Switch between NVIM configs
+# https://www.youtube.com/watch?v=LkHjJlSgKZY
+alias vim="NVIM_APPNAME=MyVim nvim"
+alias nvim="NVIM_APPNAME=MyVim nvim"
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+# alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+# alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+# alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+
+function nvims() {
+  items=("MyVim" "LazyVim") # "NvChad" "AstroNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  "  --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
+bindkey -s ^n "nvims\n"
+bindkey -s ^tl "tmux list-session\n"
+bindkey -s ^t "tmux a -t CODE_RYANAIR_BOOKING_SERVICE_DESKTOP\n"
+#compdef gitlab-ci-local
+###-begin-gitlab-ci-local-completions-###
+#
+# yargs command completion script
+#
+# Installation: gitlab-ci-local completion >> ~/.zshrc
+#    or gitlab-ci-local completion >> ~/.zprofile on OSX.
+#
+_gitlab-ci-local_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gitlab-ci-local --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _gitlab-ci-local_yargs_completions gitlab-ci-local
+###-end-gitlab-ci-local-completions-###
+
+# Kubernetes
+export KUBECONFIG="${HOME}/.kube/config.blat:${HOME}/.kube/config"
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"

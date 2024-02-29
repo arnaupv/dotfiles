@@ -1,0 +1,40 @@
+import = ["~/.config/alacritty/themes/themes/tokyo-night.toml"]
+# working_directory = "/home/pontsoul/"
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window]
+title = "Alacritty Terminal"
+opacity = 0.8
+# decoration = "buttonless"
+[window.padding]
+y = 4
+x = 10
+
+[selection]
+save_to_clipboard = true
+
+[scrolling]
+history = 2000
+
+[font]
+size = 10
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+[[keyboard.bindings]]
+key = "F11"
+action = "ToggleFullscreen"
+
+[[hints.enabled]]
+command = "xdg-open" # On Linux/BSD
+# command = "open" # On macOS
+# command = { program = "cmd", args = [ "/c", "start", "" ] } # On Windows
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "U", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"

@@ -94,7 +94,6 @@ bindsym $mod+a focus parent
 
 # If you are interested in more Iconts take a look at the following link:
 # https://fontawesome.com/v4/cheatsheet/
-
 set $workspace1 "[1]Browser " 
 set $workspace2 "[2]Terminals " 
 set $workspace3 "[3]Messaging "
@@ -215,14 +214,16 @@ exec_always feh --bg-fill ~/Pictures/moon.jpg
 exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 1920x1080 --pos 1920x0 --rotate normal
 
 exec google-chrome
-# exec gnome-terminal 
-exec alacritty 
+# exec gnome-terminal
+exec alacritty
 exec slack
+exec spotify
 
 assign [class="Google-chrome"] $workspace1
 # assign [class="Gnome-terminal"] $workspace2
 assign [class="Alacritty"] $workspace2
 assign [class="Slack"] $workspace3
+assign [class="Spotify"] $workspace9
 
 # Source: https://dev.to/dianjuar/i3wm-screenshot-shortcuts-3n7b
 # Dependencies: sudo apt install maim xclip copyq

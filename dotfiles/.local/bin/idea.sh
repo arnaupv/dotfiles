@@ -1,0 +1,1 @@
+/home/arnaup/setup-environment/software/idea-IC-221.5921.22/bin/idea.sh
