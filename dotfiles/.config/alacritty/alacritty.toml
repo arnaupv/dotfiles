@@ -2,7 +2,7 @@ import = ["/home/arnaup/.config/alacritty/themes/themes/tokyo-night.toml"]
 # working_directory = "/home/arnaup/"
 
 [font]
-size = 12
+size = 15
 
 [[keyboard.bindings]]
 action = "ToggleFullscreen"

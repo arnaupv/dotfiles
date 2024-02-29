@@ -111,26 +111,26 @@ bindkey "^[[1;5D" backward-word
 
 # Switch between NVIM configs
 # https://www.youtube.com/watch?v=LkHjJlSgKZY
-alias vim="NVIM_APPNAME=MyVim nvim"
-alias nvim="NVIM_APPNAME=MyVim nvim"
-alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-# alias nvim-kick="NVIM_APPNAME=kickstart nvim"
-# alias nvim-chad="NVIM_APPNAME=NvChad nvim"
-# alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
-
-function nvims() {
-  items=("MyVim" "LazyVim") # "NvChad" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  "  --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  fi
-  NVIM_APPNAME=$config nvim $@
-}
-
-bindkey -s ^n "nvims\n"
-bindkey -s ^tl "tmux list-session\n"
-bindkey -s ^t "tmux a -t CODE_RYANAIR_BOOKING_SERVICE_DESKTOP\n"
+# alias vim="NVIM_APPNAME=MyVim nvim"
+# alias nvim="NVIM_APPNAME=MyVim nvim"
+# alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+# # alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+# # alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+# # alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+#
+# function nvims() {
+#   items=("MyVim" "LazyVim") # "NvChad" "AstroNvim")
+#   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  "  --layout=reverse --border --exit-0)
+#   if [[ -z $config ]]; then
+#     echo "Nothing selected"
+#     return 0
+#   fi
+#   NVIM_APPNAME=$config nvim $@
+# }
+#
+# bindkey -s ^n "nvims\n"
+# bindkey -s ^tl "tmux list-session\n"
+# bindkey -s ^t "tmux a -t CODE_RYANAIR_BOOKING_SERVICE_DESKTOP\n"
 #compdef gitlab-ci-local
 ###-begin-gitlab-ci-local-completions-###
 #
@@ -156,3 +156,4 @@ export KUBECONFIG="${HOME}/.kube/config.blat:${HOME}/.kube/config"
 
 # Scaleway CLI autocomplete initialization.
 eval "$(scw autocomplete script shell=zsh)"
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

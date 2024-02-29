@@ -4,7 +4,7 @@ set -xe
 
 # sh ./fonts.sh
 
-NVIM_VERSION=v0.9.1
+NVIM_VERSION=v0.9.5
 
 # Check if I'm connected as root user. If not, exit.
 if [ "$(id -u)" != "0" ]; then
