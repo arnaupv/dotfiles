@@ -1,0 +1,23 @@
+regolith.wallpaper.file: /home/pontsoul/Pictures/moon.jpg
+regolith.wallpaper.options: wallpaper
+regolith.lockscreen.wallpaper.file: /home/pontsoul/Pictures/moon.jpg
+regolith.lockscreen.wallpaper.options: wallpaper
+
+gnome.terminal.font:	JetBrains Mono 14
+
+/* # https://www.nerdfonts.com/cheat-sheet */
+wm.workspace.01.name: 1:[1] 
+wm.workspace.02.name: 2:[2] 
+wm.workspace.03.name: 3:[3] 󰒱
+wm.workspace.04.name: 4:[4] 󱘖
+wm.workspace.05.name: 5:[5] 󰀴
+wm.workspace.06.name: 6:[6] 
+wm.workspace.07.name: 7:[7] 
+wm.workspace.08.name: 8:[8] 
+
+wm.bar.mode: hide
+
+wm.mod: Mod4
+wm.alt: Mod1
+!regolith.look.path: /usr/share/regolith-look/ayu-dark
+regolith.look.path: /usr/share/regolith-look/solarized-dark

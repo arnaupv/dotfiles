@@ -1,0 +1,55 @@
+###############################################################################
+# Window and Workspace Configuration
+###############################################################################
+
+# Config key binding
+bindsym $mod+c exec regolith-control-center
+
+# Print Key Bindings
+# https://github.com/regolith-linux/regolith-desktop/issues/648
+bindsym --release Print exec --no-startup-id "flameshot gui"
+
+
+# Reference
+# https://i3wm.org/docs/userguide.html
+
+# Fix workspaces to specific outputs
+set_from_resource $monitor2 "eDP-1"
+# Laptop Screen
+set_from_resource $monitor1 "DP-3"
+
+workspace 1  output $monitor1
+workspace 2  output $monitor1
+workspace 3  output $monitor2
+workspace 4  output $monitor2
+workspace 5  output $monitor1
+workspace 6  output $monitor1
+workspace 7  output $monitor1
+workspace 8  output $monitor1
+workspace 9  output $monitor1
+workspace 10 output $monitor1
+
+# Define assignation of programs
+assign [class="Google-chrome"] $ws1
+assign [title="Google Chrome"] $ws1
+assign [class="Alacritty"] $ws2
+assign [class="Slack"] $ws3
+assign [class=".*httptoolkit.*"] $ws4
+assign [title=".*Android Emulator.*"] $ws4
+assign [class="jetbrains-idea-ce"] $ws6
+assign [title="Postman"] $ws7
+assign [title="Spotify"] $ws8
+
+# Startup Programs
+exec google-chrome
+exec alacritty
+exec slack
+exec spotify
+
+# Open Emulator with a shortcut always next to the terminal
+bindsym $mod+Ctrl+e exec emulator_start.sh
+for_window [title=".*Android Emulator.*"] resize set width 600
+
+bindsym $mod+Ctrl+i exec httptoolkit
+bindsym $mod+Ctrl+p exec Postman
+

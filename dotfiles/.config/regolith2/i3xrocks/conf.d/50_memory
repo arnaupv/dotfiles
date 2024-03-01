@@ -1,6 +1,0 @@
-# Memory
-[memory]
-interval=10
-display=used
-type=mem
-percentage=true
