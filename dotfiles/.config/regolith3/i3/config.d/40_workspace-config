@@ -43,7 +43,6 @@ assign [title="Spotify"] $ws8
 # Startup Programs
 exec google-chrome
 exec alacritty
-exec slack
 exec spotify
 
 # Open Emulator with a shortcut always next to the terminal
