@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Alacritty
+Icon=/home/pontsoul/setup-environment/dotfiles/.local/share/icons/alacritty-icon.svg
+Exec=alacritty
