@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Obsidian
+Icon=/home/pontsoul/setup-environment/dotfiles/.local/share/icons/obsidian-icon.svg
+Exec=Obsidian-1.5.11.AppImage
